@@ -105,8 +105,8 @@ export default function Home() {
                 <span className="text-xs font-sans uppercase tracking-[0.3em] text-accent font-semibold">Established 2021</span>
               </motion.div>
               
-              <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-medium text-primary leading-[1.05] tracking-tight mb-8">
-                Diversification <br />
+              <motion.h1 variants={fadeUp} className="text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-medium text-primary leading-[1.05] tracking-tight mb-8">
+                Diversification <br className="hidden sm:block" />
                 <span className="italic font-light text-accent">With Direction.</span>
               </motion.h1>
               
@@ -185,8 +185,8 @@ export default function Home() {
                 <div className="w-24 h-[1px] bg-accent/30"></div>
               </motion.div>
               
-              <motion.h2 variants={fadeUp} className="text-4xl lg:text-5xl font-serif text-primary mb-12 leading-[1.2]">
-                A unified brand identity <br/><span className="italic text-accent">harnessing business opportunities</span> across strategic industries.
+              <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-serif text-primary mb-8 md:mb-12 leading-[1.3] md:leading-[1.2]">
+                A unified brand identity <br className="hidden md:block"/><span className="italic text-accent">harnessing business opportunities</span> across strategic industries.
               </motion.h2>
 
               <div className="space-y-8 text-lg font-sans font-light text-slate-600 leading-relaxed">
