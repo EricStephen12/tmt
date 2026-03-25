@@ -61,7 +61,7 @@ export default function Contact() {
                 <div className="w-12 h-[1px] bg-accent" />
                 <span className="text-accent font-sans text-sm tracking-[0.2em] uppercase">Connect</span>
               </motion.div>
-              <motion.h1 variants={fadeUp} className="text-5xl lg:text-7xl font-serif text-primary leading-[1.1] mb-8">
+              <motion.h1 variants={fadeUp} className="text-4xl md:text-5xl lg:text-7xl font-serif text-primary leading-[1.1] mb-8">
                 Get in <span className="italic text-slate-400">Touch</span>
               </motion.h1>
               <motion.p variants={fadeUp} className="text-xl text-slate-600 leading-relaxed max-w-lg font-light mb-12">

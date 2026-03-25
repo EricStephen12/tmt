@@ -32,7 +32,7 @@ export default function Logistics() {
                 <div className="w-12 h-[1px] bg-accent" />
                 <span className="text-accent font-sans text-sm tracking-[0.2em] uppercase">TMT Logistics</span>
               </motion.div>
-              <motion.h1 variants={fadeUp} className="text-5xl lg:text-7xl font-serif text-primary leading-[1.1] mb-8">
+              <motion.h1 variants={fadeUp} className="text-4xl md:text-5xl lg:text-7xl font-serif text-primary leading-[1.1] mb-8">
                 Bridging Distances <br />
                 <span className="italic text-slate-400">Delivering Success</span>
               </motion.h1>

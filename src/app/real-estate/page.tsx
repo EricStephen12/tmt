@@ -100,7 +100,7 @@ export default function RealEstatePage() {
               <div className="w-12 h-[1px] bg-accent"></div>
             </motion.div>
             
-            <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl font-serif font-medium text-white tracking-tight mb-6 leading-[1.1]">
+            <motion.h1 variants={fadeUp} className="text-4xl md:text-5xl lg:text-7xl font-serif font-medium text-white tracking-tight mb-6 leading-[1.1]">
               TMT Real Estate & <br className="hidden md:block"/>
               <span className="text-accent italic font-light">Construction</span>
             </motion.h1>

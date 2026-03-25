@@ -32,7 +32,7 @@ export default function TMCA() {
                 <div className="w-12 h-[1px] bg-accent" />
                 <span className="text-accent font-sans text-sm tracking-[0.2em] uppercase">TMCA</span>
               </motion.div>
-              <motion.h1 variants={fadeUp} className="text-5xl lg:text-7xl font-serif text-primary leading-[1.1] mb-8">
+              <motion.h1 variants={fadeUp} className="text-4xl md:text-5xl lg:text-7xl font-serif text-primary leading-[1.1] mb-8">
                 Corporate <br />
                 <span className="italic text-slate-400">Academy</span>
               </motion.h1>

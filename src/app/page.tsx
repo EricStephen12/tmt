@@ -105,7 +105,7 @@ export default function Home() {
                 <span className="text-xs font-sans uppercase tracking-[0.3em] text-accent font-semibold">Established 2021</span>
               </motion.div>
               
-              <motion.h1 variants={fadeUp} className="text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-medium text-primary leading-[1.05] tracking-tight mb-8">
+              <motion.h1 variants={fadeUp} className="text-4xl sm:text-4xl md:text-5xl lg:text-7xl lg:text-[5.5rem] font-serif font-medium text-primary leading-[1.05] tracking-tight mb-8">
                 Diversification <br className="hidden sm:block" />
                 <span className="italic font-light text-accent">With Direction.</span>
               </motion.h1>
