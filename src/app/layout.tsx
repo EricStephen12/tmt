@@ -3,6 +3,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CustomCursor from "@/components/CustomCursor";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -59,6 +60,7 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable} h-full antialiased scroll-smooth`}
     >
       <body className="font-sans min-h-screen flex flex-col bg-background text-foreground">
+        <CustomCursor />
         <Navbar />
         <main className="flex-grow pt-20">
           {children}

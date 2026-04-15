@@ -1,97 +1,137 @@
 import Link from "next/link";
 import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import Magnetic from "./Magnetic";
 
 export default function Footer() {
   return (
-    <footer className="bg-primary text-white pt-24 pb-12">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-8 mb-20">
+    <footer className="bg-accent-light text-primary pt-48 pb-12 relative overflow-hidden border-t border-primary/5">
+      {/* 1. HUGE BACKGROUND BRANDING (LIGHT THEME WATERMARK) */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full pointer-events-none select-none opacity-[0.04] z-0">
+        <h2 className="text-[25vw] font-serif font-bold whitespace-nowrap leading-none text-center text-primary">
+          TMT GROUP
+        </h2>
+      </div>
+
+      {/* 2. DYNAMIC DECORATIONS - SUBTLE LIGHT THEME */}
+      <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-accent/5 blur-[150px] rounded-full"></div>
+      <div className="absolute bottom-[-5%] right-[-5%] w-[400px] h-[400px] bg-white blur-[120px] rounded-full"></div>
+      
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        
+        {/* 3. MAIN ASYMMETRIC GRID */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start mb-40">
           
-          {/* Brand Column */}
-          <div className="lg:col-span-4 pr-12">
-            <Link href="/" className="inline-block mb-8 group">
-              <span className="text-3xl font-serif font-bold tracking-tight text-white">
-                TMT <span className="text-accent font-sans font-light">GROUP</span>
-              </span>
-            </Link>
-            <p className="text-slate-300 font-serif italic text-xl mb-6">
-              "...always with you"
-            </p>
-            <p className="text-sm text-slate-400 leading-relaxed mb-8">
-              A diversified business enterprise providing innovative, practical, and value-driven solutions across strategic sectors of the economy since 2021.
-            </p>
-          </div>
-
-          {/* Contact Column */}
-          <div className="lg:col-span-4">
-            <h3 className="text-xs font-sans tracking-[0.2em] text-accent uppercase mb-8">Head Office</h3>
-            <ul className="space-y-6">
-              <li className="flex items-start gap-4 text-slate-300 group">
-                <MapPin className="w-5 h-5 text-accent mt-0.5 shrink-0" />
-                <span className="text-sm leading-relaxed max-w-[250px] group-hover:text-white transition-colors">
-                  Suite 046, Global Plaza, <br/>
-                  By Jabi Upstairs, Jabi,<br/>
-                  Abuja FCT.
+          {/* Left: Brand Identity & Large Connect */}
+          <div className="lg:col-span-7">
+            <Link href="/" className="inline-block mb-16 group">
+              <div className="flex flex-col">
+                <span className="text-6xl font-serif font-bold tracking-tighter text-primary leading-none group-hover:text-accent transition-colors duration-700">
+                  TMT.
                 </span>
-              </li>
-              <li className="flex items-center gap-4 text-slate-300 group">
-                <Phone className="w-5 h-5 text-accent shrink-0" />
-                <a href="tel:+2348174006548" className="text-sm group-hover:text-white transition-colors">
-                  +234 (0)8174006548
-                </a>
-              </li>
-              <li className="flex items-center gap-4 text-slate-300 group">
-                <Mail className="w-5 h-5 text-accent shrink-0" />
-                <a href="mailto:Tmtglobal@gmail.com" className="text-sm group-hover:text-white transition-colors">
-                  Tmtglobal@gmail.com
-                </a>
-              </li>
-            </ul>
-          </div>
+                <span className="text-[10px] font-sans font-bold tracking-[0.8em] text-accent uppercase mt-4 leading-none ml-1">
+                  Global Enterprise
+                </span>
+              </div>
+            </Link>
 
-          {/* Quick Links Column */}
-          <div className="lg:col-span-4">
-            <h3 className="text-xs font-sans tracking-[0.2em] text-accent uppercase mb-8">Our Subsidiaries</h3>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-4">
-              <Link href="/real-estate" className="text-sm text-slate-400 hover:text-accent transition-colors flex items-center gap-2 group">
-                <ArrowRight className="w-3 h-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" /> Real Estate
-              </Link>
-              <Link href="/consulting" className="text-sm text-slate-400 hover:text-accent transition-colors flex items-center gap-2 group">
-                <ArrowRight className="w-3 h-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" /> Consulting
-              </Link>
-              <Link href="/logistics" className="text-sm text-slate-400 hover:text-accent transition-colors flex items-center gap-2 group">
-                <ArrowRight className="w-3 h-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" /> Logistics
-              </Link>
-              <Link href="/agriculture" className="text-sm text-slate-400 hover:text-accent transition-colors flex items-center gap-2 group">
-                <ArrowRight className="w-3 h-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" /> Agriculture
-              </Link>
-              <Link href="/schools" className="text-sm text-slate-400 hover:text-accent transition-colors flex items-center gap-2 group">
-                <ArrowRight className="w-3 h-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" /> Schools
-              </Link>
-              <Link href="/media-tech" className="text-sm text-slate-400 hover:text-accent transition-colors flex items-center gap-2 group">
-                <ArrowRight className="w-3 h-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" /> Media & Tech
-              </Link>
-              <Link href="/hospitality" className="text-sm text-slate-400 hover:text-accent transition-colors flex items-center gap-2 group">
-                <ArrowRight className="w-3 h-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" /> Hospitality
-              </Link>
-              <Link href="/tmca" className="text-sm text-slate-400 hover:text-accent transition-colors flex items-center gap-2 group">
-                <ArrowRight className="w-3 h-3 opacity-0 -ml-5 group-hover:opacity-100 group-hover:ml-0 transition-all" /> TMCA
-              </Link>
+            <div className="space-y-12">
+              <h3 className="text-[10px] font-sans font-bold tracking-[0.5em] text-primary/20 uppercase">
+                Let's Build Together
+              </h3>
+              <div className="space-y-4">
+                <Magnetic strength={0.1}>
+                  <a 
+                    href="mailto:Tmtglobal@gmail.com" 
+                    className="block text-4xl md:text-6xl lg:text-7xl font-serif italic text-primary hover:text-accent transition-all duration-700 hover:translate-x-4 tracking-tighter"
+                  >
+                    Tmtglobal@gmail.com
+                  </a>
+                </Magnetic>
+                <Magnetic strength={0.1}>
+                  <a 
+                    href="tel:+2348174006548" 
+                    className="block text-2xl md:text-4xl font-serif text-slate-500 hover:text-primary transition-all duration-700 hover:translate-x-4"
+                  >
+                    +234 (0) 817 400 6548
+                  </a>
+                </Magnetic>
+              </div>
             </div>
           </div>
 
-        </div>
+          {/* Right: Portfolio & Navigation */}
+          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-16 lg:pt-32">
+            {/* Portfolio Links */}
+            <div>
+              <h4 className="text-[10px] font-sans font-bold tracking-[0.4em] text-accent uppercase mb-10">
+                Portfolio
+              </h4>
+              <ul className="space-y-5">
+                {['Real Estate', 'Logistics', 'Consulting', 'Agriculture', 'Hospitality'].map((item) => (
+                  <li key={item}>
+                    <Link 
+                      href={`/${item.toLowerCase()}`} 
+                      className="text-sm text-slate-500 hover:text-primary transition-all duration-500 flex items-center group/link"
+                    >
+                      <span className="w-0 h-[1px] bg-accent group-hover/link:w-6 transition-all duration-500 mr-0 group-hover/link:mr-4"></span>
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-slate-500 font-sans tracking-widest">
-            &copy; {new Date().getFullYear()} TMT GROUP. ALL RIGHTS RESERVED.
-          </p>
-          <div className="flex gap-6">
-            <Link href="/privacy" className="text-xs text-slate-500 hover:text-white transition-colors uppercase tracking-widest">Privacy Policy</Link>
-            <Link href="/terms" className="text-xs text-slate-500 hover:text-white transition-colors uppercase tracking-widest">Terms of Service</Link>
+            {/* Corporate Links */}
+            <div>
+              <h4 className="text-[10px] font-sans font-bold tracking-[0.4em] text-accent uppercase mb-10">
+                Corporate
+              </h4>
+              <ul className="space-y-5">
+                {['About Us', 'Our Team', 'Strategic Vision', 'Contact'].map((item) => (
+                  <li key={item}>
+                    <Link 
+                      href={`/${item.toLowerCase().replace(' ', '-')}`} 
+                      className="text-sm text-slate-500 hover:text-primary transition-all duration-500 flex items-center group/link"
+                    >
+                      <span className="w-0 h-[1px] bg-accent group-hover/link:w-6 transition-all duration-500 mr-0 group-hover/link:mr-4"></span>
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
+
+        {/* 4. SOCIALS & BOTTOM BAR */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-12 pt-12 border-t border-primary/10">
+          {/* Large Interactive Socials */}
+          <div className="flex gap-12 items-center">
+            {['LinkedIn', 'Instagram', 'Twitter'].map((social) => (
+              <a 
+                key={social} 
+                href="#" 
+                className="text-[10px] font-sans font-bold tracking-[0.4em] text-slate-400 hover:text-primary transition-all duration-500 uppercase relative group"
+              >
+                {social}
+                <span className="absolute -bottom-2 left-0 w-0 h-[1px] bg-accent transition-all duration-500 group-hover:w-full"></span>
+              </a>
+            ))}
+          </div>
+
+          {/* Minimal Copyright & Legal */}
+          <div className="flex flex-col md:items-end gap-2 text-right">
+            <p className="text-[10px] text-slate-400 font-sans tracking-[0.2em] uppercase">
+              &copy; {new Date().getFullYear()} TMT GROUP HOLDINGS. ALL RIGHTS RESERVED.
+            </p>
+            <div className="flex gap-8">
+              <Link href="/privacy" className="text-[9px] text-slate-400 hover:text-primary transition-colors uppercase tracking-widest">Privacy</Link>
+              <Link href="/terms" className="text-[9px] text-slate-400 hover:text-primary transition-colors uppercase tracking-widest">Terms</Link>
+            </div>
+          </div>
+        </div>
+
       </div>
     </footer>
   );
