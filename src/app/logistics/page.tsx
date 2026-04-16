@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Truck, Globe, MapPin, Package } from "lucide-react";
+import Image from "next/image";
 
 const fadeUp: any = {
   hidden: { opacity: 0, y: 40 },
@@ -18,9 +19,12 @@ const staggerContainer: any = {
 
 export default function Logistics() {
   return (
-    <main className="min-h-screen bg-bgLight">
+    <main className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative pt-40 pb-24 lg:pt-56 lg:pb-32 overflow-hidden">
+        {/* Abstract Background Elements */}
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-accent-light/50 rounded-bl-[100px] -z-10"></div>
+        
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div 
@@ -30,17 +34,17 @@ export default function Logistics() {
             >
               <motion.div variants={fadeUp} className="flex items-center gap-4 mb-8">
                 <div className="w-12 h-[1px] bg-accent" />
-                <span className="text-accent font-sans text-sm tracking-[0.2em] uppercase">TMT Logistics</span>
+                <span className="text-accent font-sans text-xs tracking-[0.3em] uppercase font-bold">TMT Logistics</span>
               </motion.div>
               <motion.h1 variants={fadeUp} className="text-4xl md:text-5xl lg:text-7xl font-serif text-primary leading-[1.1] mb-8">
                 Bridging Distances <br />
-                <span className="italic text-slate-400">Delivering Success</span>
+                <span className="italic text-accent font-light">Delivering Success</span>
               </motion.h1>
-              <motion.p variants={fadeUp} className="text-xl text-slate-600 leading-relaxed font-light mb-10 max-w-lg">
-                Reliable, efficient, and comprehensive supply chain solutions tailored to move your business forward.
+              <motion.p variants={fadeUp} className="text-xl text-slate-500 leading-relaxed font-sans font-light mb-10 max-w-lg">
+                Reliable, efficient, and comprehensive supply chain solutions tailored to move your business forward across the continent.
               </motion.p>
               <motion.div variants={fadeUp}>
-                <a href="/contact" className="inline-flex items-center gap-3 bg-primary text-white px-8 py-4 text-sm font-sans tracking-[0.2em] uppercase hover:bg-accent transition-colors group">
+                <a href="/contact" className="btn-primary inline-flex items-center gap-3">
                   Request a Quote
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
@@ -50,42 +54,67 @@ export default function Logistics() {
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="relative aspect-square lg:aspect-[4/3] w-full"
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              className="relative aspect-square lg:aspect-[4/3] w-full group"
             >
-              <div className="absolute inset-0 bg-primary/5 rounded-2xl -rotate-2" />
-              <div className="absolute inset-0 bg-white border border-slate-100 rounded-2xl rotate-2 overflow-hidden shadow-2xl flex items-center justify-center">
-                 <div className="text-slate-300 text-center p-8">
-                  <Truck className="w-16 h-16 mx-auto mb-4 opacity-50" />
-                  <p className="font-serif italic text-xl">Logistics Fleet & Ops</p>
-                 </div>
+              {/* Decorative Frame */}
+              <div className="absolute -top-6 -right-6 w-32 h-32 border-t border-r border-accent/20 transition-all duration-700 group-hover:-top-3 group-hover:-right-3"></div>
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 border-b border-l border-accent/20 transition-all duration-700 group-hover:-bottom-3 group-hover:-left-3"></div>
+              
+              <div className="relative w-full h-full overflow-hidden rounded-sm shadow-2xl">
+                <Image 
+                  src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&q=80&w=2000" 
+                  alt="African Logistics and Freight"
+                  fill
+                  className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-40"></div>
               </div>
+
+              {/* Stats Box */}
+              <motion.div 
+                initial={{ x: 20, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.6 }}
+                className="absolute -bottom-10 -right-6 bg-white p-8 shadow-xl border border-accent/10 hidden md:block"
+              >
+                <div className="flex items-center gap-4 mb-2">
+                  <Truck className="w-5 h-5 text-accent" />
+                  <span className="text-[10px] font-sans uppercase tracking-[0.2em] text-slate-400 font-bold">Fleet Operations</span>
+                </div>
+                <p className="text-3xl font-serif text-primary">24/7 <span className="text-sm italic text-accent font-light">Global Support</span></p>
+              </motion.div>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-24 bg-white">
+      <section className="py-32 bg-background relative border-t border-accent/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="mb-16 md:mb-24 text-center max-w-3xl mx-auto"
+            className="mb-24 text-center max-w-3xl mx-auto"
           >
-            <motion.h2 variants={fadeUp} className="text-3xl lg:text-5xl font-serif text-primary mb-6">Our Services</motion.h2>
-            <motion.p variants={fadeUp} className="text-slate-500 font-light leading-relaxed">
-              From local deliveries to complex international supply chains, TMT Logistics provides end-to-end management with precision and speed.
-            </motion.p>
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="w-8 h-[1px] bg-accent"></div>
+              <span className="text-[10px] font-sans uppercase tracking-[0.4em] text-accent font-bold">Our Services</span>
+              <div className="w-8 h-[1px] bg-accent"></div>
+            </div>
+            <h2 className="text-4xl lg:text-6xl font-serif text-primary mb-8">Supply Chain <span className="italic font-light text-accent">Precision</span></h2>
+            <p className="text-slate-500 font-sans font-light leading-relaxed">
+              From local deliveries to complex international supply chains, TMT Logistics provides end-to-end management with precision, speed, and absolute reliability.
+            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: Truck, title: "Freight Forwarding", desc: "Seamless domestic and cross-border freight transportation via road, air, and sea." },
-              { icon: Package, title: "Warehousing", desc: "Secure inventory management and strategic storage solutions for bulk goods." },
-              { icon: Globe, title: "Supply Chain Solutions", desc: "End-to-end optimization of your logistics funnel to minimize cost and delay." }
+              { icon: Truck, title: "Freight Forwarding", desc: "Seamless domestic and cross-border freight transportation via road, air, and sea with real-time tracking." },
+              { icon: Package, title: "Warehousing", desc: "Secure inventory management and strategic storage solutions for bulk goods and delicate assets." },
+              { icon: Globe, title: "Supply Chain Solutions", desc: "End-to-end optimization of your logistics funnel to minimize cost and maximize operational efficiency." }
             ].map((service, i) => (
               <motion.div
                 key={i}
@@ -93,14 +122,14 @@ export default function Logistics() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={staggerContainer}
-                className="group p-10 border border-slate-100 hover:border-accent hover:shadow-xl transition-all duration-300 bg-bgLight"
+                className="group p-10 border border-accent/10 hover:border-accent/30 transition-all duration-500 bg-white shadow-sm hover:shadow-xl"
               >
                 <motion.div variants={fadeUp}>
-                  <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-8 shadow-sm group-hover:scale-110 transition-transform">
-                    <service.icon className="w-6 h-6 text-accent" />
+                  <div className="w-14 h-14 border border-accent/20 rounded-full flex items-center justify-center mb-10 group-hover:bg-accent transition-all duration-500">
+                    <service.icon className="w-6 h-6 text-accent group-hover:text-white" />
                   </div>
-                  <h3 className="text-xl font-serif text-primary mb-4">{service.title}</h3>
-                  <p className="text-slate-500 leading-relaxed font-light">{service.desc}</p>
+                  <h3 className="text-2xl font-serif text-primary mb-6 group-hover:text-accent transition-colors">{service.title}</h3>
+                  <p className="text-slate-500 font-sans leading-relaxed font-light text-sm">{service.desc}</p>
                 </motion.div>
               </motion.div>
             ))}
@@ -110,3 +139,4 @@ export default function Logistics() {
     </main>
   );
 }
+

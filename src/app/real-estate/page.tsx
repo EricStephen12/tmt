@@ -15,6 +15,7 @@ import {
   Image as ImageIcon
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const fadeUp: any = {
   hidden: { opacity: 0, y: 30 },
@@ -79,13 +80,16 @@ export default function RealEstatePage() {
       {/* 1. LUXURY HERO */}
       <section className="relative h-[80vh] flex items-center overflow-hidden border-b border-accent/20">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-primary"></div>
+          <div className="absolute inset-0 bg-primary">
+             {/* Abstract gold pattern overlay */}
+             <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+          </div>
           {/* Abstract geometric gold accents */}
           <div className="absolute right-0 top-0 w-1/2 h-full border-l border-accent/20 opacity-30 transform skew-x-12 translate-x-32"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-20 w-full">
-          <Link href="/" className="inline-flex items-center gap-3 text-xs font-sans uppercase tracking-[0.2em] text-accent hover:text-white mb-12 transition-colors group">
+          <Link href="/" className="inline-flex items-center gap-3 text-[10px] font-sans uppercase tracking-[0.4em] text-accent hover:text-white mb-12 transition-colors group">
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> TMT Group
           </Link>
           
@@ -105,19 +109,19 @@ export default function RealEstatePage() {
               <span className="text-accent italic font-light">Construction</span>
             </motion.h1>
             
-            <motion.p variants={fadeUp} className="text-2xl font-serif italic text-accent-light mb-8">
+            <motion.p variants={fadeUp} className="text-2xl font-serif italic text-accent-light/60 mb-8">
               "Shaping Spaces, Securing Futures"
             </motion.p>
             
             <motion.p variants={fadeUp} className="text-lg text-slate-300 font-sans font-light leading-relaxed max-w-2xl">
-              We specialize in property development, building construction, project management, and related infrastructure services.
+              We specialize in property development, building construction, project management, and related infrastructure services across the African landscape.
             </motion.p>
           </motion.div>
         </div>
       </section>
 
       {/* 2. THE EDITORIAL ABOUT SECTION */}
-      <section className="py-32 bg-white relative">
+      <section className="py-32 bg-background relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-20 items-center">
             
@@ -129,7 +133,7 @@ export default function RealEstatePage() {
               className="lg:col-span-6"
             >
               <motion.div variants={fadeUp} className="flex items-center gap-3 mb-8">
-                <span className="text-xs font-sans uppercase tracking-[0.3em] text-accent font-semibold">Our Foundation</span>
+                <span className="text-[10px] font-sans uppercase tracking-[0.4em] text-accent font-bold">Our Foundation</span>
                 <div className="w-24 h-[1px] bg-accent/30"></div>
               </motion.div>
               
@@ -137,7 +141,7 @@ export default function RealEstatePage() {
                 Every structure is a foundation for <span className="italic text-accent">dreams, growth, and legacy.</span>
               </motion.h2>
 
-              <div className="space-y-6 text-lg font-sans font-light text-slate-600 leading-relaxed mb-12">
+              <div className="space-y-6 text-lg font-sans font-light text-slate-500 leading-relaxed mb-12">
                 <motion.p variants={fadeUp}>
                   At TMT Real Estate and Construction LTD, we work to provide lasting solutions that meet the needs of individuals, families, businesses, and communities with a strong commitment to quality and innovation.
                 </motion.p>
@@ -155,8 +159,8 @@ export default function RealEstatePage() {
                   "True Transparency",
                   "Value-Driven"
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 text-primary font-sans text-sm font-semibold tracking-wide">
-                     <Check className="w-4 h-4 text-accent" />
+                  <div key={i} className="flex items-center gap-3 text-primary font-sans text-xs font-bold tracking-widest uppercase">
+                     <Check className="w-3 h-3 text-accent" />
                      {item}
                   </div>
                 ))}
@@ -167,18 +171,24 @@ export default function RealEstatePage() {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-6"
             >
-              <div className="relative aspect-[3/4] bg-background border border-accent/20 p-4">
-                 <div className="w-full h-full bg-slate-100 flex flex-col items-center justify-center border border-slate-200 shadow-inner">
-                    <ImageIcon className="w-12 h-12 text-accent/50 mb-4" />
-                    <p className="text-xs font-sans uppercase tracking-[0.2em] text-slate-400">Construction Architecture</p>
+              <div className="relative aspect-[3/4] bg-background border border-accent/20 p-4 group">
+                 <div className="relative w-full h-full overflow-hidden shadow-2xl">
+                    <Image 
+                      src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000" 
+                      alt="Modern African Architecture"
+                      fill
+                      className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out"
+                    />
+                    <div className="absolute inset-0 bg-primary/20 mix-blend-multiply"></div>
                  </div>
+                 
                  {/* Floating Mission Box */}
-                 <div className="absolute -bottom-10 -left-10 bg-primary p-8 text-white w-80 shadow-2xl border border-accent/20 hidden md:block">
-                   <h3 className="text-xs font-sans uppercase tracking-[0.3em] text-accent mb-4">Our Mission</h3>
-                   <p className="font-serif italic text-lg leading-relaxed">
+                 <div className="absolute -bottom-10 -left-10 bg-primary p-10 text-white w-80 shadow-2xl border border-accent/20 hidden md:block z-20">
+                   <h3 className="text-[10px] font-sans uppercase tracking-[0.4em] text-accent mb-6 font-bold">Our Mission</h3>
+                   <p className="font-serif italic text-xl leading-relaxed">
                      To provide innovative, cost-effective construction solutions that exceed client expectations through structural excellence.
                    </p>
                  </div>
@@ -190,16 +200,16 @@ export default function RealEstatePage() {
       </section>
 
       {/* 3. LUXURY SERVICES GRID */}
-      <section className="py-32 bg-background border-t border-slate-200/50">
+      <section className="py-32 bg-background border-t border-accent/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8 text-center md:text-left">
             <div>
-              <div className="flex items-center gap-3 mb-6">
+              <div className="flex items-center gap-3 mb-6 justify-center md:justify-start">
                 <div className="w-12 h-[1px] bg-accent"></div>
-                <span className="text-xs font-sans uppercase tracking-[0.3em] text-accent font-semibold">Capabilities</span>
+                <span className="text-[10px] font-sans uppercase tracking-[0.4em] text-accent font-bold">Capabilities</span>
               </div>
-              <h2 className="text-4xl lg:text-5xl font-serif text-primary leading-tight">
-                Engineering <br/><span className="italic font-light">Excellence</span>
+              <h2 className="text-4xl lg:text-6xl font-serif text-primary leading-tight">
+                Engineering <br/><span className="italic font-light text-accent">Excellence</span>
               </h2>
             </div>
           </div>
@@ -209,16 +219,16 @@ export default function RealEstatePage() {
               {services.map((service, i) => (
                 <motion.div 
                   key={i}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: i * 0.1 }}
-                  className="card-luxury p-8 group relative overflow-hidden"
+                  transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  className="bg-white p-10 group relative overflow-hidden border border-accent/5 hover:border-accent/20 transition-all duration-500 shadow-sm hover:shadow-xl"
                 >
-                  <div className="w-10 h-10 border border-accent/30 flex items-center justify-center rounded-full mb-8 text-accent group-hover:bg-accent group-hover:text-white transition-colors duration-500">
-                    <service.icon className="w-4 h-4" />
+                  <div className="w-12 h-12 border border-accent/20 flex items-center justify-center rounded-full mb-10 text-accent group-hover:bg-accent group-hover:text-white transition-all duration-500">
+                    <service.icon className="w-5 h-5" />
                   </div>
-                  <h3 className="font-serif text-xl text-primary mb-4">{service.title}</h3>
+                  <h3 className="font-serif text-2xl text-primary mb-6 group-hover:text-accent transition-colors">{service.title}</h3>
                   <p className="font-sans text-sm text-slate-500 font-light leading-relaxed">
                     {service.description}
                   </p>
@@ -230,20 +240,23 @@ export default function RealEstatePage() {
       </section>
 
       {/* 4. PRESTIGE CTA */}
-      <section className="py-32 bg-primary relative overflow-hidden">
-        <div className="max-w-4xl mx-auto px-6 text-center">
+      <section className="py-40 bg-primary relative overflow-hidden">
+        {/* Abstract pattern */}
+        <div className="absolute inset-0 opacity-5 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+        
+        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h2 className="text-4xl md:text-5xl font-serif text-white mb-8 leading-[1.2]">
+            <h2 className="text-4xl md:text-6xl font-serif text-white mb-10 leading-[1.2]">
               Building trust and delivering projects <br/>
               <span className="italic text-accent font-light">that stand the test of time.</span>
             </h2>
-            <div className="w-24 h-[1px] bg-accent mx-auto mb-10"></div>
-            <a href="mailto:Tmtglobal@gmail.com" className="btn-primary bg-accent text-primary px-12 py-5 hover:bg-white inline-block">
+            <div className="w-24 h-[1px] bg-accent mx-auto mb-12"></div>
+            <a href="mailto:Tmtglobal@gmail.com" className="btn-primary bg-accent text-primary px-16 py-6 hover:bg-white inline-block">
               Inquire About Properties
             </a>
           </motion.div>
@@ -252,3 +265,4 @@ export default function RealEstatePage() {
     </div>
   );
 }
+

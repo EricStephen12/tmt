@@ -34,59 +34,59 @@ const staggerContainer: any = {
 const subsidiaries = [
   {
     name: "TMT Real Estate",
-    description: "Architectural brilliance and property solutions that build lasting legacies.",
+    description: "Architectural brilliance and property solutions that build lasting legacies across Africa.",
     icon: Building2,
     href: "/real-estate",
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000"
   },
   {
     name: "TMT Consulting",
-    description: "Strategic enterprise advisory elevating performance and visionary leadership.",
+    description: "Strategic enterprise advisory elevating performance and visionary leadership in the African markets.",
     icon: Briefcase,
     href: "/consulting",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000"
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=2000"
   },
   {
     name: "High Star Logistics",
-    description: "Precision-driven haulage ensuring seamless operational excellence.",
+    description: "Precision-driven haulage ensuring seamless operational excellence across borders.",
     icon: Truck,
     href: "/logistics",
     image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&q=80&w=2000"
   },
   {
     name: "Yutaka Farm",
-    description: "Sustainable agricultural production pioneering food security.",
+    description: "Sustainable agricultural production pioneering food security for the continent.",
     icon: Leaf,
     href: "/agriculture",
     image: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=2000"
   },
   {
     name: "TMT Schools",
-    description: "Cultivating future leaders through premium educational administration.",
+    description: "Cultivating future leaders through premium educational administration and global standards.",
     icon: GraduationCap,
     href: "/schools",
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=2000"
+    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=2000"
   },
   {
     name: "TMT Technologies",
-    description: "Cutting-edge digital and multimedia strategies for modern enterprise.",
+    description: "Cutting-edge digital and multimedia strategies for the modern African enterprise.",
     icon: MonitorPlay,
     href: "/media-tech",
     image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=2000"
   },
   {
     name: "Tours & Hospitality",
-    description: "Bespoke travel and hospitality experiences crafted for ultimate convenience.",
+    description: "Bespoke travel and hospitality experiences crafted for ultimate relaxation and immersion.",
     icon: Hotel,
     href: "/hospitality",
-    image: "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&q=80&w=2000"
+    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=2000"
   },
   {
     name: "Premium Klin",
-    description: "Executive lifestyle care delivering uncompromised service quality.",
+    description: "Executive lifestyle care delivering uncompromised service quality and luxury maintenance.",
     icon: Shirt,
     href: "/lifestyle",
-    image: "https://images.unsplash.com/photo-1520004481444-dcd3ce353771?auto=format&fit=crop&q=80&w=2000"
+    image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=2000"
   }
 ];
 

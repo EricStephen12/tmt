@@ -48,8 +48,11 @@ export default function Contact() {
   };
 
   return (
-    <main className="min-h-screen bg-bgLight">
-      <section className="relative pt-40 pb-24 lg:pt-56 lg:pb-32">
+    <main className="min-h-screen bg-background">
+      <section className="relative pt-40 pb-24 lg:pt-56 lg:pb-32 overflow-hidden">
+        {/* Abstract Background Elements */}
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-accent-light/50 rounded-bl-[100px] -z-10"></div>
+        
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
             <motion.div 
@@ -59,49 +62,49 @@ export default function Contact() {
             >
               <motion.div variants={fadeUp} className="flex items-center gap-4 mb-8">
                 <div className="w-12 h-[1px] bg-accent" />
-                <span className="text-accent font-sans text-sm tracking-[0.2em] uppercase">Connect</span>
+                <span className="text-accent font-sans text-xs tracking-[0.3em] uppercase font-bold">Connect</span>
               </motion.div>
               <motion.h1 variants={fadeUp} className="text-4xl md:text-5xl lg:text-7xl font-serif text-primary leading-[1.1] mb-8">
-                Get in <span className="italic text-slate-400">Touch</span>
+                Get in <span className="italic text-accent font-light">Touch</span>
               </motion.h1>
-              <motion.p variants={fadeUp} className="text-xl text-slate-600 leading-relaxed max-w-lg font-light mb-12">
+              <motion.p variants={fadeUp} className="text-xl text-slate-500 leading-relaxed max-w-lg font-sans font-light mb-12">
                 Whether you have an inquiry about our subsidiaries, need a consultation, or want to explore partnership opportunities, we are here to listen.
               </motion.p>
               
-              <div className="space-y-8">
-                <motion.div variants={fadeUp} className="flex gap-6 items-start group">
-                  <div className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center shrink-0 group-hover:border-accent transition-colors">
-                    <MapPin className="w-5 h-5 text-primary group-hover:text-accent transition-colors" />
+              <div className="space-y-10">
+                <motion.div variants={fadeUp} className="flex gap-8 items-start group">
+                  <div className="w-12 h-12 rounded-full border border-accent/20 flex items-center justify-center shrink-0 group-hover:bg-accent transition-all duration-500">
+                    <MapPin className="w-5 h-5 text-accent group-hover:text-white transition-colors" />
                   </div>
                   <div>
-                    <h3 className="font-serif text-xl text-primary mb-2">Head Office</h3>
-                    <p className="text-slate-500 font-light leading-relaxed">
+                    <h3 className="font-serif text-2xl text-primary mb-2 group-hover:text-accent transition-colors">Head Office</h3>
+                    <p className="text-slate-500 font-sans font-light leading-relaxed">
                       Suite 046, Global Plaza,<br />
                       By Jabi Upstairs, Jabi,<br />
-                      Abuja FCT
+                      Abuja FCT, Nigeria
                     </p>
                   </div>
                 </motion.div>
 
-                <motion.div variants={fadeUp} className="flex gap-6 items-start group">
-                  <div className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center shrink-0 group-hover:border-accent transition-colors">
-                    <Phone className="w-5 h-5 text-primary group-hover:text-accent transition-colors" />
+                <motion.div variants={fadeUp} className="flex gap-8 items-start group">
+                  <div className="w-12 h-12 rounded-full border border-accent/20 flex items-center justify-center shrink-0 group-hover:bg-accent transition-all duration-500">
+                    <Phone className="w-5 h-5 text-accent group-hover:text-white transition-colors" />
                   </div>
                   <div>
-                    <h3 className="font-serif text-xl text-primary mb-2">Phone</h3>
-                    <p className="text-slate-500 font-light leading-relaxed">
-                      +234 (0)8174006548
+                    <h3 className="font-serif text-2xl text-primary mb-2 group-hover:text-accent transition-colors">Phone</h3>
+                    <p className="text-slate-500 font-sans font-light leading-relaxed">
+                      +234 (0) 817 400 6548
                     </p>
                   </div>
                 </motion.div>
 
-                <motion.div variants={fadeUp} className="flex gap-6 items-start group">
-                  <div className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center shrink-0 group-hover:border-accent transition-colors">
-                    <Mail className="w-5 h-5 text-primary group-hover:text-accent transition-colors" />
+                <motion.div variants={fadeUp} className="flex gap-8 items-start group">
+                  <div className="w-12 h-12 rounded-full border border-accent/20 flex items-center justify-center shrink-0 group-hover:bg-accent transition-all duration-500">
+                    <Mail className="w-5 h-5 text-accent group-hover:text-white transition-colors" />
                   </div>
                   <div>
-                    <h3 className="font-serif text-xl text-primary mb-2">Email</h3>
-                    <p className="text-slate-500 font-light leading-relaxed">
+                    <h3 className="font-serif text-2xl text-primary mb-2 group-hover:text-accent transition-colors">Email</h3>
+                    <p className="text-slate-500 font-sans font-light leading-relaxed">
                       Tmtglobal@gmail.com
                     </p>
                   </div>
@@ -112,13 +115,13 @@ export default function Contact() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="bg-white p-10 lg:p-14 shadow-xl border border-slate-100 relative"
+              transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-white p-10 lg:p-14 shadow-2xl border border-accent/5 relative group overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-bl-full" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-bl-full group-hover:bg-accent/10 transition-colors duration-700" />
               <form className="space-y-8 relative z-10" onSubmit={handleSubmit}>
                 {status.message && (
-                  <div className={`p-4 text-sm font-sans tracking-widest uppercase ${status.type === 'success' ? 'bg-emerald-50 text-emerald-600 border border-emerald-200' : 'bg-red-50 text-red-600 border border-red-200'}`}>
+                  <div className={`p-4 text-[10px] font-sans tracking-widest uppercase border ${status.type === 'success' ? 'bg-emerald-50 text-emerald-600 border-emerald-200' : 'bg-red-50 text-red-600 border-red-200'}`}>
                     {status.message}
                   </div>
                 )}
