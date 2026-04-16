@@ -33,7 +33,7 @@ export default function Navbar() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
       scrolled 
-        ? 'bg-white/80 backdrop-blur-xl shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] h-20 border-b border-primary/5' 
+        ? 'bg-background/80 backdrop-blur-xl shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] h-20 border-b border-primary/5' 
         : 'bg-transparent h-28'
     } flex items-center`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
@@ -89,7 +89,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 20, scale: 0.95 }}
                     transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[480px] bg-white shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)] z-50 p-8 border border-primary/5 origin-top backdrop-blur-3xl"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[480px] bg-background shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)] z-50 p-8 border border-primary/5 origin-top backdrop-blur-3xl"
                   >
                     <div className="grid grid-cols-2 gap-x-8 gap-y-2">
                       {subsidiaries.map((sub) => (
@@ -145,7 +145,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "-100%" }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-40 bg-white flex flex-col p-8 pt-32 h-screen overflow-y-auto"
+            className="fixed inset-0 z-40 bg-background flex flex-col p-8 pt-32 h-screen overflow-y-auto"
           >
             <div className="space-y-10 flex flex-col mx-auto w-full max-w-sm">
               <Link href="/" onClick={() => setIsOpen(false)} className="text-4xl font-serif text-primary hover:text-accent transition-colors">Home.</Link>

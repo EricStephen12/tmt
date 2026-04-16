@@ -244,7 +244,7 @@ export default function Home() {
       </section>
 
       {/* 2. THE EXECUTIVE SUMMARY (CLASSIC EDITORIAL STYLE) */}
-      <section id="about" className="py-40 relative bg-white overflow-hidden">
+      <section id="about" className="py-40 relative bg-background overflow-hidden">
         {/* Subtle Background Text */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden opacity-[0.02] select-none">
           <span className="absolute top-20 -left-20 text-[20vw] font-serif font-bold whitespace-nowrap">
@@ -392,6 +392,46 @@ export default function Home() {
                <p className="text-slate-500 font-sans font-light leading-relaxed">
                 Broad multi-sector capability under one brand, delivering flexible solutions tailored to actual market needs.
                </p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="flex items-center justify-between gap-6 mb-10"
+          >
+            <div className="hidden lg:flex items-center gap-3">
+              <span className="text-[9px] font-sans font-bold uppercase tracking-[0.5em] text-slate-400">
+                Hover To Expand
+              </span>
+              <motion.div
+                animate={{ x: [0, 8, 0] }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                className="flex items-center gap-2"
+              >
+                <div className="w-10 h-[1px] bg-accent/40"></div>
+                <ChevronDown className="w-4 h-4 text-accent/70 -rotate-90" />
+              </motion.div>
+            </div>
+            <div className="lg:hidden flex items-center gap-3">
+              <span className="text-[9px] font-sans font-bold uppercase tracking-[0.5em] text-slate-400">
+                Tap To Expand
+              </span>
+              <motion.div
+                animate={{ y: [0, 6, 0] }}
+                transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+                className="flex items-center gap-2"
+              >
+                <div className="w-10 h-[1px] bg-accent/40"></div>
+                <ChevronDown className="w-4 h-4 text-accent/70" />
+              </motion.div>
+            </div>
+            <div className="ml-auto flex items-center gap-2 text-[9px] font-sans font-bold uppercase tracking-[0.4em] text-accent/60">
+              <span>01</span>
+              <div className="w-10 h-[1px] bg-accent/20"></div>
+              <span>08</span>
             </div>
           </motion.div>
 

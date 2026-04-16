@@ -5,9 +5,9 @@
 @theme {
   --color-primary: #111111; /* Deep Graphite/Black for modern luxury */
   --color-accent: #c2a35d; /* Refined Muted Gold */
-  --color-accent-light: #fdfbf7; /* Near-white Champagne for soft backgrounds */
+  --color-accent-light: #e7fdff; /* Light water/aqua tint for soft backgrounds */
   --color-surface: #ffffff;
-  --color-background: #ffffff; /* Clean white background */
+  --color-background: #f1fdff; /* Whitish aqua (light water) background */
   --color-foreground: #1c1c1c;
   --color-border-subtle: #f0f0f0;
 
