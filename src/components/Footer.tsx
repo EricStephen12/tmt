@@ -30,7 +30,7 @@ export default function Footer() {
                   TMT.
                 </span>
                 <span className="text-[10px] font-sans font-bold tracking-[0.8em] text-accent uppercase mt-4 leading-none ml-1">
-                  Global Enterprise
+                  TMT Group
                 </span>
               </div>
             </Link>

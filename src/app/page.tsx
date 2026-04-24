@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring, useTransform } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import { 
   Building2, 
@@ -12,7 +12,9 @@ import {
   ArrowRight,
   MonitorPlay,
   Shirt,
-  ChevronDown
+  ChevronDown,
+  ShoppingCart,
+  Video
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -34,73 +36,98 @@ const staggerContainer: any = {
 const subsidiaries = [
   {
     name: "TMT Real Estate",
-    description: "Architectural brilliance and property solutions that build lasting legacies across Africa.",
+    description: "Building more than just walls. We create the spaces where your family's legacy actually begins.",
     icon: Building2,
     href: "/real-estate",
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000"
   },
   {
     name: "TMT Consulting",
-    description: "Strategic enterprise advisory elevating performance and visionary leadership in the African markets.",
+    description: "We help you stop guessing and start growing. Real advice for real impact in the African market.",
     icon: Briefcase,
     href: "/consulting",
     image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=2000"
   },
   {
     name: "High Star Logistics",
-    description: "Precision-driven haulage ensuring seamless operational excellence across borders.",
+    description: "Your goods, our promise. We're the bridge that connects your business to the rest of the world.",
     icon: Truck,
     href: "/logistics",
     image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&q=80&w=2000"
   },
   {
     name: "Yutaka Farm",
-    description: "Sustainable agricultural production pioneering food security for the continent.",
+    description: "Feeding Africa starts with the soil. We're bringing sustainable, heart-led farming to every table.",
     icon: Leaf,
     href: "/agriculture",
     image: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=2000"
   },
   {
     name: "TMT Schools",
-    description: "Cultivating future leaders through premium educational administration and global standards.",
+    description: "The future belongs to our kids. We're giving them the world-class education they deserve to lead it.",
     icon: GraduationCap,
     href: "/schools",
     image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=2000"
   },
   {
     name: "TMT Technologies",
-    description: "Cutting-edge digital and multimedia strategies for the modern African enterprise.",
+    description: "Tech that feels human. We're building the digital tools that power the modern African dream.",
     icon: MonitorPlay,
     href: "/media-tech",
     image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=2000"
   },
   {
     name: "Tours & Hospitality",
-    description: "Bespoke travel and hospitality experiences crafted for ultimate relaxation and immersion.",
+    description: "Your escape, reimagined. We craft travel experiences that stay with you long after you've returned home.",
     icon: Hotel,
     href: "/hospitality",
     image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=2000"
   },
   {
     name: "Premium Klin",
-    description: "Executive lifestyle care delivering uncompromised service quality and luxury maintenance.",
+    description: "Take your time back. We handle the executive lifestyle care so you can focus on your big wins.",
     icon: Shirt,
     href: "/lifestyle",
     image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=2000"
+  },
+  {
+    name: "TMT Bookstore",
+    description: "Unlock your next big idea. A curated home for the books and resources that shape the African mind.",
+    icon: ShoppingCart,
+    href: "/bookstore",
+    image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=2000"
+  },
+  {
+    name: "Virtual Training",
+    description: "Learn at your own pace, on your own terms. Professional training designed for the real world.",
+    icon: Video,
+    href: "/training",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=2000"
   }
 ];
 
 export default function Home() {
   const [activeSub, setActiveSub] = useState<number>(0);
-  const { scrollYProgress } = useScroll();
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001
   });
 
+  // Parallax transforms
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, -400]);
+  const rotateHero = useTransform(scrollYProgress, [0, 0.2], [0, 5]);
+  const opacityHero = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
+
   return (
-    <div className="flex flex-col min-h-screen bg-background relative selection:bg-accent selection:text-white">
+    <div ref={containerRef} className="flex flex-col min-h-screen bg-background relative selection:bg-accent selection:text-white">
       {/* Noise Texture Overlay */}
       <div className="fixed inset-0 pointer-events-none z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
       
@@ -114,8 +141,14 @@ export default function Home() {
       <section className="relative h-screen flex items-center pt-28 overflow-hidden">
         {/* Abstract Architectural Background Elements */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 right-0 w-3/4 h-full bg-accent-light/30 rounded-bl-[100px] transform translate-x-10 -translate-y-10"></div>
-          <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-accent/5 rounded-tr-[100px] transform -translate-x-10 translate-y-10"></div>
+          <motion.div 
+            style={{ y: y1 }}
+            className="absolute top-0 right-0 w-3/4 h-full bg-accent-light/30 rounded-bl-[100px] transform translate-x-10 -translate-y-10"
+          ></motion.div>
+          <motion.div 
+            style={{ y: y2 }}
+            className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-accent/5 rounded-tr-[100px] transform -translate-x-10 translate-y-10"
+          ></motion.div>
           
           {/* Floating Decorative Elements */}
           <motion.div 
@@ -141,7 +174,9 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
-          <div className="grid lg:grid-cols-12 gap-16 items-center">
+          <motion.div 
+            style={{ rotate: rotateHero, opacity: opacityHero }}
+            className="grid lg:grid-cols-12 gap-16 items-center">
             
             <motion.div 
               initial="hidden"
@@ -224,7 +259,7 @@ export default function Home() {
                 </div>
               </div>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Scroll to Discover Indicator */}
@@ -232,7 +267,8 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2, duration: 1 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-4 z-10"
+          data-cursor-text="Scroll"
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-4 z-10 cursor-pointer"
         >
           <span className="text-[9px] font-sans font-bold uppercase tracking-[0.5em] text-accent/60">Discover</span>
           <motion.div 

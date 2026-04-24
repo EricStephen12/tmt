@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -14,6 +15,8 @@ const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
 });
+
+import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
   title: "TMT Group | ...always with you",
@@ -55,18 +58,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${playfair.variable} h-full antialiased scroll-smooth`}
-    >
-      <body className="font-sans min-h-screen flex flex-col bg-background text-foreground">
-        <CustomCursor />
-        <Navbar />
-        <main className="flex-grow pt-20">
-          {children}
-        </main>
-        <Footer />
-      </body>
-    </html>
+    <ClerkProvider>
+      <html
+        lang="en"
+        className={`${inter.variable} ${playfair.variable} antialiased scroll-smooth`}
+      >
+        <body className="font-sans min-h-screen flex flex-col bg-background text-foreground">
+          <SmoothScroll>
+          <CustomCursor />
+          <Navbar />
+          <main className="flex-grow pt-20">
+            {children}
+          </main>
+          <Footer />
+        </SmoothScroll>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

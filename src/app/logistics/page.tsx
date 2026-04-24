@@ -1,12 +1,16 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, Truck, Globe, MapPin, Package } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Truck, Package, Globe, Shield, ChevronRight, MapPin } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { useRef } from "react";
+import Magnetic from "@/components/Magnetic";
+import SubsidiaryBreadcrumb from "@/components/SubsidiaryBreadcrumb";
 
 const fadeUp: any = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } }
 };
 
 const staggerContainer: any = {
@@ -17,126 +21,404 @@ const staggerContainer: any = {
   }
 };
 
-export default function Logistics() {
+const services = [
+  { 
+    icon: Truck, 
+    title: "Road Freight & Haulage", 
+    desc: "Reliable cargo haulage and delivery across Nigeria's major routes — from Abuja to Lagos, Port Harcourt, Kano, and more.",
+    points: ["Interstate Haulage", "Dedicated Fleet", "Real-Time Tracking"]
+  },
+  { 
+    icon: Package, 
+    title: "Warehousing & Storage", 
+    desc: "Secure, structured warehousing solutions with inventory management designed to streamline your supply chain operations.",
+    points: ["Secure Storage", "Inventory Management", "Last-Mile Distribution"]
+  },
+  { 
+    icon: Globe, 
+    title: "Import & Export Support", 
+    desc: "We assist businesses with the movement of goods across borders, including documentation support and customs facilitation.",
+    points: ["Import Assistance", "Export Handling", "Customs Support"]
+  },
+  { 
+    icon: Shield, 
+    title: "Secure Cargo Handling", 
+    desc: "High-priority handling of sensitive, valuable, or fragile goods with full accountability from pickup to delivery.",
+    points: ["Sensitive Goods", "Insured Cargo", "Full Accountability"]
+  }
+];
+
+const galleryImages = [
+  "/images/logistic1.jpg",
+  "/images/logistic.jpg",
+  "/images/logistic3.jpg",
+  "/images/logistic4.jpg"
+];
+
+export default function LogisticsPage() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, -400]);
+
   return (
-    <main className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="relative pt-40 pb-24 lg:pt-56 lg:pb-32 overflow-hidden">
-        {/* Abstract Background Elements */}
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-accent-light/50 rounded-bl-[100px] -z-10"></div>
-        
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <div ref={containerRef} className="flex flex-col min-h-screen bg-background relative selection:bg-accent selection:text-white">
+      {/* Noise Texture Overlay */}
+      <div className="fixed inset-0 pointer-events-none z-[100] opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+
+      {/* 1. LUXURY HERO SECTION */}
+      <section className="relative min-h-[85vh] flex items-center pt-20 pb-16 overflow-hidden">
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-[0.025] select-none">
+            <span className="absolute top-1/4 -left-10 text-[22vw] font-serif font-bold whitespace-nowrap text-primary">
+              SPEED.
+            </span>
+          </div>
+          <motion.div 
+            style={{ y: y1 }}
+            className="absolute top-0 right-0 w-[60%] h-full bg-accent-light/20 skew-x-[-12deg] origin-top-right transform translate-x-20 pointer-events-none"
+          />
+          <motion.div 
+            style={{ y: y2 }}
+            className="absolute -top-20 right-[5%] w-[35%] h-[120%] border-r border-accent/15 skew-x-[-12deg] pointer-events-none"
+          />
+          <motion.div
+            animate={{ rotate: -360 }}
+            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+            className="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] border border-accent/5 rounded-full pointer-events-none"
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
+          <div className="grid lg:grid-cols-12 gap-16 items-center">
+            
             <motion.div 
               initial="hidden"
               animate="visible"
               variants={staggerContainer}
+              className="lg:col-span-8"
             >
-              <motion.div variants={fadeUp} className="flex items-center gap-4 mb-8">
-                <div className="w-12 h-[1px] bg-accent" />
-                <span className="text-accent font-sans text-xs tracking-[0.3em] uppercase font-bold">TMT Logistics</span>
+              <motion.div variants={fadeUp} className="mb-12">
+                <SubsidiaryBreadcrumb name="High Star Logistics" />
               </motion.div>
-              <motion.h1 variants={fadeUp} className="text-4xl md:text-5xl lg:text-7xl font-serif text-primary leading-[1.1] mb-8">
-                Bridging Distances <br />
-                <span className="italic text-accent font-light">Delivering Success</span>
+
+              <motion.div variants={fadeUp} className="flex items-center gap-3 mb-3">
+                <div className="w-12 h-[1px] bg-accent"></div>
+                <span className="text-xs font-sans uppercase tracking-[0.3em] text-accent font-semibold">High Star Logistics</span>
+              </motion.div>
+
+              <motion.div variants={fadeUp} className="flex items-center gap-2 mb-8">
+                <MapPin className="w-3.5 h-3.5 text-slate-400" />
+                <span className="text-[11px] font-sans text-slate-400 tracking-wide">Abuja, Nigeria · Interstate Routes</span>
+              </motion.div>
+              
+              <motion.h1 
+                variants={staggerContainer}
+                className="text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] font-serif font-medium text-primary leading-[1.05] tracking-tight mb-8"
+              >
+                <div className="overflow-hidden">
+                  <motion.span variants={fadeUp} className="block">Move Anything.</motion.span>
+                </div>
+                <div className="overflow-hidden">
+                  <motion.span variants={fadeUp} className="italic font-light text-accent block">Anywhere in Nigeria.</motion.span>
+                </div>
               </motion.h1>
-              <motion.p variants={fadeUp} className="text-xl text-slate-500 leading-relaxed font-sans font-light mb-10 max-w-lg">
-                Reliable, efficient, and comprehensive supply chain solutions tailored to move your business forward across the continent.
+              
+              <motion.p variants={fadeUp} className="text-lg md:text-xl text-slate-500 font-sans font-light leading-relaxed mb-12 max-w-2xl">
+                High Star Logistics is a Nigerian freight and supply chain company providing dependable road haulage, warehousing, and cargo handling services across major routes from our Abuja base.
               </motion.p>
-              <motion.div variants={fadeUp}>
-                <a href="/contact" className="btn-primary inline-flex items-center gap-3">
-                  Request a Quote
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </a>
+              
+              <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-6 pt-4">
+                <Magnetic>
+                  <Link href="#services" className="btn-primary group relative overflow-hidden">
+                    <span className="relative z-10">Explore Services</span>
+                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                  </Link>
+                </Magnetic>
               </motion.div>
             </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-4 hidden lg:block group relative"
+            >
+              <div className="relative w-full aspect-square border border-accent/20 rounded-full flex items-center justify-center p-8 backdrop-blur-sm shadow-xl">
+                 <motion.div 
+                   animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
+                   transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                 >
+                   <Truck className="w-16 h-16 text-accent opacity-50" />
+                 </motion.div>
+                 <div className="absolute inset-4 border border-accent/10 rounded-full animate-ping"></div>
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 2. THE STORY (ABOUT) */}
+      <section className="py-40 relative bg-background overflow-hidden border-t border-accent/10">
+        {/* Decorative BG — Ghost Text + Animated Circles */}
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden opacity-[0.025] select-none">
+          <span className="absolute top-10 -left-10 text-[18vw] font-serif font-bold whitespace-nowrap text-primary">
+            MOVE. HAUL. DELIVER.
+          </span>
+        </div>
+        {/* Dynamic Skewed Speed Shapes */}
+        <motion.div style={{ y: y1 }} className="absolute top-0 right-0 w-[60%] h-full bg-accent/[0.05] skew-x-[-12deg] origin-top-right transform translate-x-20 pointer-events-none" />
+        <motion.div style={{ y: y1 }} className="absolute top-20 right-0 w-[40%] h-full border-l border-accent/15 skew-x-[-12deg] origin-top-right transform translate-x-10 pointer-events-none" />
+        <motion.div style={{ y: y2 }} className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-accent-light/15 skew-x-[15deg] origin-bottom-left transform -translate-x-10 pointer-events-none" />
+        <motion.div animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }} className="absolute top-1/4 right-16 w-32 h-32 border border-accent/10 rounded-full pointer-events-none" />
+        <motion.div animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }} transition={{ duration: 14, repeat: Infinity, ease: "linear" }} className="absolute bottom-1/4 left-8 w-48 h-48 border border-accent/5 rounded-full pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-12 gap-24 items-start">
             
             <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-              className="relative aspect-square lg:aspect-[4/3] w-full group"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={fadeUp}
+              className="lg:col-span-5 relative group"
             >
-              {/* Decorative Frame */}
-              <div className="absolute -top-6 -right-6 w-32 h-32 border-t border-r border-accent/20 transition-all duration-700 group-hover:-top-3 group-hover:-right-3"></div>
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 border-b border-l border-accent/20 transition-all duration-700 group-hover:-bottom-3 group-hover:-left-3"></div>
+              <div className="sticky top-40">
+                <div className="relative aspect-[3/4] overflow-hidden rounded-sm">
+                  <motion.div 
+                    initial={{ scale: 1.2 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                    className="w-full h-full relative"
+                  >
+                    <Image 
+                      src="/images/logistic2.jpg" 
+                      alt="TMT Logistics Operations"
+                      fill
+                      className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-60"></div>
+                  </motion.div>
+                  
+                  <motion.div
+                    initial={{ scaleY: 1 }}
+                    whileInView={{ scaleY: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute inset-0 bg-accent origin-top z-10"
+                  />
+                </div>
+                
+                <div className="absolute -top-6 -left-6 w-32 h-32 border-t border-l border-accent/30 -z-10"></div>
+                <div className="absolute -bottom-6 -right-6 w-32 h-32 border-b border-r border-accent/30 -z-10"></div>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+              className="lg:col-span-7"
+            >
+              <motion.div variants={fadeUp} className="flex items-center gap-4 mb-10">
+                <div className="w-12 h-[1px] bg-accent"></div>
+                <span className="text-[10px] font-sans uppercase tracking-[0.4em] text-accent font-bold">Company Profile</span>
+              </motion.div>
               
-              <div className="relative w-full h-full overflow-hidden rounded-sm shadow-2xl">
-                <Image 
-                  src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&q=80&w=2000" 
-                  alt="African Logistics and Freight"
-                  fill
-                  className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-40"></div>
+              <motion.h2 variants={fadeUp} className="text-4xl sm:text-5xl lg:text-6xl font-serif text-primary mb-12 leading-[1.1] tracking-tight">
+                Nigerian Routes. <br/>
+                <span className="italic font-light text-accent">Reliable Delivery.</span>
+              </motion.h2>
+
+              <div className="space-y-8 text-lg font-sans font-light text-slate-500 leading-relaxed max-w-2xl">
+                <motion.p variants={fadeUp}>
+                  High Star Logistics is a dedicated freight and haulage company operating out of Abuja, Nigeria. We connect businesses to their customers through dependable, well-managed road transport services.
+                </motion.p>
+                <motion.p variants={fadeUp}>
+                  We believe that logistics is about more than moving goods — it's about <span className="text-primary font-medium italic">keeping promises</span>. Every delivery we make is a commitment to your customer's trust.
+                </motion.p>
               </div>
 
-              {/* Stats Box */}
-              <motion.div 
-                initial={{ x: 20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.6 }}
-                className="absolute -bottom-10 -right-6 bg-white p-8 shadow-xl border border-accent/10 hidden md:block"
-              >
-                <div className="flex items-center gap-4 mb-2">
-                  <Truck className="w-5 h-5 text-accent" />
-                  <span className="text-[10px] font-sans uppercase tracking-[0.2em] text-slate-400 font-bold">Fleet Operations</span>
+              <motion.div variants={fadeUp} className="mt-16 grid sm:grid-cols-2 gap-8">
+                <div>
+                  <h4 className="font-serif text-2xl text-primary mb-3">Our Vision</h4>
+                  <p className="font-sans text-sm text-slate-500 font-light pr-4 border-l-2 border-accent/20 pl-4">
+                    To be the most trusted logistics partner, connecting businesses across the continent to global markets.
+                  </p>
                 </div>
-                <p className="text-3xl font-serif text-primary">24/7 <span className="text-sm italic text-accent font-light">Global Support</span></p>
+                <div>
+                  <h4 className="font-serif text-2xl text-primary mb-3">Our Mission</h4>
+                  <p className="font-sans text-sm text-slate-500 font-light pr-4 border-l-2 border-accent/20 pl-4">
+                    To provide secure, fast, and cost-effective transportation solutions that exceed expectations.
+                  </p>
+                </div>
               </motion.div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-32 bg-background relative border-t border-accent/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      {/* 3. OUR OFFERINGS */}
+      <section id="services" className="py-32 bg-background relative overflow-hidden border-t border-primary/5">
+        {/* Decorative BG — Ghost Text + Circles */}
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden opacity-[0.02] select-none">
+          <span className="absolute top-0 right-0 text-[16vw] font-serif font-bold whitespace-nowrap text-primary">
+            CARGO.
+          </span>
+        </div>
+        {/* Dynamic Sweeping Angles */}
+        <motion.div style={{ y: y1 }} className="absolute -top-32 right-0 w-[700px] h-[500px] bg-accent-light/10 skew-y-[10deg] origin-right pointer-events-none" />
+        <motion.div style={{ y: y1 }} className="absolute -top-10 right-20 w-[500px] h-[300px] border-b border-l border-accent/15 skew-y-[10deg] pointer-events-none" />
+        <motion.div style={{ y: y2 }} className="absolute bottom-0 left-0 w-[600px] h-[400px] bg-accent/[0.04] skew-y-[-10deg] origin-left pointer-events-none" />
+        <motion.div animate={{ y: [0, -15, 0], rotate: [0, 8, 0] }} transition={{ duration: 12, repeat: Infinity, ease: "linear" }} className="absolute top-12 right-24 w-40 h-40 border border-accent/10 rounded-full pointer-events-none" />
+        <motion.div animate={{ y: [0, 18, 0], rotate: [0, -6, 0] }} transition={{ duration: 9, repeat: Infinity, ease: "linear" }} className="absolute bottom-16 left-12 w-56 h-56 border border-accent/5 rounded-full pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={staggerContainer}
-            className="mb-24 text-center max-w-3xl mx-auto"
+            variants={fadeUp}
+            className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-12"
           >
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="w-8 h-[1px] bg-accent"></div>
-              <span className="text-[10px] font-sans uppercase tracking-[0.4em] text-accent font-bold">Our Services</span>
-              <div className="w-8 h-[1px] bg-accent"></div>
+            <div className="relative">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-16 h-[1px] bg-accent"></div>
+                <span className="text-[10px] font-sans uppercase tracking-[0.4em] text-accent font-bold">Solutions</span>
+              </div>
+              <h2 className="text-5xl lg:text-7xl font-serif text-primary leading-tight tracking-tight">
+                Our Supply Chain <br/><span className="italic font-light">Capabilities</span>
+              </h2>
             </div>
-            <h2 className="text-4xl lg:text-6xl font-serif text-primary mb-8">Supply Chain <span className="italic font-light text-accent">Precision</span></h2>
-            <p className="text-slate-500 font-sans font-light leading-relaxed">
-              From local deliveries to complex international supply chains, TMT Logistics provides end-to-end management with precision, speed, and absolute reliability.
-            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { icon: Truck, title: "Freight Forwarding", desc: "Seamless domestic and cross-border freight transportation via road, air, and sea with real-time tracking." },
-              { icon: Package, title: "Warehousing", desc: "Secure inventory management and strategic storage solutions for bulk goods and delicate assets." },
-              { icon: Globe, title: "Supply Chain Solutions", desc: "End-to-end optimization of your logistics funnel to minimize cost and maximize operational efficiency." }
-            ].map((service, i) => (
-              <motion.div
-                key={i}
-                initial="hidden"
-                whileInView="visible"
+          <div className="divide-y divide-primary/5">
+            {services.map((service, i) => (
+              <motion.div 
+                key={service.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                variants={staggerContainer}
-                className="group p-10 border border-accent/10 hover:border-accent/30 transition-all duration-500 bg-white shadow-sm hover:shadow-xl"
+                transition={{ duration: 0.7, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                className="group grid grid-cols-12 gap-4 lg:gap-10 py-10 hover:bg-accent/[0.025] transition-all duration-500 cursor-default -mx-6 px-6"
               >
-                <motion.div variants={fadeUp}>
-                  <div className="w-14 h-14 border border-accent/20 rounded-full flex items-center justify-center mb-10 group-hover:bg-accent transition-all duration-500">
-                    <service.icon className="w-6 h-6 text-accent group-hover:text-white" />
+                <div className="col-span-1 hidden md:flex items-start pt-1">
+                  <span className="text-[10px] font-sans font-bold tracking-[0.3em] text-primary/20 group-hover:text-accent transition-colors duration-500">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                </div>
+                <div className="col-span-12 md:col-span-4">
+                  <div className="w-10 h-10 rounded-full border border-primary/10 flex items-center justify-center mb-4 group-hover:border-accent/30 group-hover:bg-accent/5 transition-all duration-500">
+                    <service.icon className="w-4 h-4 text-accent" />
                   </div>
-                  <h3 className="text-2xl font-serif text-primary mb-6 group-hover:text-accent transition-colors">{service.title}</h3>
-                  <p className="text-slate-500 font-sans leading-relaxed font-light text-sm">{service.desc}</p>
-                </motion.div>
+                  <h3 className="font-serif text-2xl lg:text-[1.75rem] text-primary leading-tight">
+                    {service.title}
+                  </h3>
+                </div>
+                <div className="col-span-12 md:col-span-4 flex items-center">
+                  <p className="font-sans text-[15px] text-slate-500 font-light leading-relaxed">
+                    {service.desc}
+                  </p>
+                </div>
+                <div className="col-span-12 md:col-span-3 flex flex-row md:flex-col items-start md:items-end justify-start md:justify-center gap-2 flex-wrap">
+                  {service.points.map((pt, idx) => (
+                    <span key={idx} className="text-[9px] font-sans uppercase tracking-[0.15em] text-primary/30 group-hover:text-accent/60 transition-colors duration-500">
+                      {pt}
+                    </span>
+                  ))}
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
-    </main>
+
+      {/* 4. GALLERY */}
+      <section className="py-24 bg-background overflow-hidden relative">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-16">
+          <motion.div 
+            initial={{opacity: 0, x: -20}} 
+            whileInView={{opacity: 1, x: 0}} 
+            viewport={{once: true}}
+            className="flex items-center gap-4"
+          >
+            <div className="w-12 h-[1px] bg-accent"></div>
+            <span className="text-[10px] font-sans uppercase tracking-[0.4em] text-accent font-bold">The Fleet</span>
+          </motion.div>
+        </div>
+
+        <div className="flex gap-6 px-6 lg:px-8 overflow-x-auto pb-12 snap-x snap-mandatory scrollbar-hide">
+          {galleryImages.map((img, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: i * 0.1 }}
+              className="relative min-w-[300px] md:min-w-[400px] lg:min-w-[500px] aspect-[4/3] snap-center rounded-sm overflow-hidden group"
+            >
+              <Image 
+                src={img}
+                alt="Logistics Gallery Image"
+                fill
+                className="object-cover transition-transform duration-1000 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-700"></div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* 5. CTA */}
+      <section className="py-60 bg-primary relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/images/logistic4.jpg" 
+            alt="Logistics Freight"
+            fill
+            className="object-cover opacity-[0.15] grayscale"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/95 to-transparent"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 text-center">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="max-w-4xl mx-auto"
+          >
+            <motion.div variants={fadeUp} className="flex items-center justify-center gap-4 mb-8">
+              <div className="w-12 h-[1px] bg-accent"></div>
+              <span className="text-[10px] font-sans uppercase tracking-[0.5em] text-accent font-bold">Collaborate</span>
+              <div className="w-12 h-[1px] bg-accent"></div>
+            </motion.div>
+            
+            <motion.h2 variants={fadeUp} className="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-10 leading-[1.1] tracking-tighter">
+              Let's move your <br/>
+              <span className="italic font-light text-accent">business forward.</span>
+            </motion.h2>
+            
+            <motion.div variants={fadeUp}>
+              <Magnetic strength={0.2}>
+                <Link href="/contact" className="group relative inline-flex items-center justify-center">
+                  <div className="absolute inset-0 bg-white translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-700 opacity-10"></div>
+                  <div className="relative px-16 py-6 bg-accent text-white font-sans text-[11px] font-bold uppercase tracking-[0.6em] overflow-hidden">
+                    <span className="relative z-10 group-hover:text-primary transition-colors duration-500">Request A Quote</span>
+                    <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-700 z-0"></div>
+                  </div>
+                </Link>
+              </Magnetic>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+    </div>
   );
 }
-

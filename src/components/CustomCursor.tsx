@@ -8,6 +8,8 @@ export default function CustomCursor() {
   const [isClicking, setIsClicking] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
+  const [cursorText, setCursorText] = useState("");
+
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
@@ -24,15 +26,22 @@ export default function CustomCursor() {
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (
+      
+      // Determine cursor text based on target
+      if (target.closest("[data-cursor-text]")) {
+        setCursorText(target.closest("[data-cursor-text]")?.getAttribute("data-cursor-text") || "");
+        setIsHovering(true);
+      } else if (
         target.tagName.toLowerCase() === "a" ||
         target.tagName.toLowerCase() === "button" ||
         target.closest("a") ||
         target.closest("button") ||
         target.classList.contains("cursor-pointer")
       ) {
+        setCursorText("");
         setIsHovering(true);
       } else {
+        setCursorText("");
         setIsHovering(false);
       }
     };
@@ -78,21 +87,35 @@ export default function CustomCursor() {
       
       {/* Outer Ring */}
       <motion.div
-        className="fixed top-0 left-0 w-10 h-10 border border-accent/30 rounded-full pointer-events-none z-[9998]"
+        className="fixed top-0 left-0 w-10 h-10 border border-accent/30 rounded-full pointer-events-none z-[9998] flex items-center justify-center"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
           translateX: "-50%",
           translateY: "-50%",
-          scale: isHovering ? 1.8 : 1,
+          scale: cursorText ? 2.5 : isHovering ? 1.8 : 1,
           opacity: isVisible ? 1 : 0,
           borderWidth: isHovering ? "1px" : "1.5px",
+          backgroundColor: cursorText ? "rgba(17, 17, 17, 0.1)" : "transparent",
         }}
         transition={{
           scale: { type: "spring", stiffness: 150, damping: 20 },
           opacity: { duration: 0.2 },
         }}
-      />
+      >
+        <AnimatePresence>
+          {cursorText && (
+            <motion.span
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.5 }}
+              className="text-[8px] font-sans font-bold uppercase tracking-widest text-accent"
+            >
+              {cursorText}
+            </motion.span>
+          )}
+        </AnimatePresence>
+      </motion.div>
 
       {/* Hover Text Hint */}
       <motion.div
