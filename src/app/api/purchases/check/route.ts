@@ -19,7 +19,7 @@ export async function GET(req: Request) {
       },
     });
 
-    const purchasedBookIds = purchases.map((p) => p.bookId);
+    const purchasedBookIds = purchases.map((p: any) => p.bookId);
 
     return NextResponse.json({ purchasedBookIds });
   } catch (error) {
