@@ -429,25 +429,22 @@ export default function BookstorePage() {
           </motion.div>
         </div>
 
-        <div className="flex gap-6 px-6 lg:px-8 overflow-x-auto pb-12 snap-x snap-mandatory scrollbar-hide">
-          {galleryImages.map((img, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: i * 0.1 }}
-              className="relative min-w-[300px] md:min-w-[400px] lg:min-w-[500px] aspect-[4/3] snap-center rounded-sm overflow-hidden group"
-            >
-              <Image 
-                src={img}
-                alt="Bookstore Gallery Image"
-                fill
-                className="object-cover transition-transform duration-1000 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-700"></div>
-            </motion.div>
-          ))}
+        <div className="px-6 lg:px-8 max-w-7xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2 }}
+            className="relative aspect-[21/9] rounded-sm overflow-hidden group border border-white/5"
+          >
+            <Image 
+              src="/nigerian_luxury_library_1777041369091.png"
+              alt="TMT Bookstore Atmosphere"
+              fill
+              className="object-cover transition-transform duration-1000 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors duration-700"></div>
+          </motion.div>
         </div>
       </section>
 

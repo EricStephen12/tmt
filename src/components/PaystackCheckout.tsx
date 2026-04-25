@@ -55,23 +55,15 @@ export default function PaystackCheckout({ bookId, amount, bookTitle }: Paystack
   return (
     <div className="flex flex-col gap-2">
       <button
-        disabled={isLoading}
-        onClick={handleCheckout}
-        className="group relative inline-flex items-center justify-center disabled:opacity-70 transition-all duration-500"
+        disabled={true}
+        className="group relative inline-flex items-center justify-center opacity-60 cursor-not-allowed transition-all duration-500"
       >
-        <div className="absolute inset-0 bg-white translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500 opacity-20"></div>
-        <div className="relative px-12 py-5 bg-accent text-white font-sans text-[10px] font-bold uppercase tracking-[0.4em] flex items-center gap-3 overflow-hidden">
-          {isLoading ? (
-            <Loader2 className="w-3 h-3 animate-spin" />
-          ) : (
-            <>
-              <span className="relative z-10 group-hover:text-primary transition-colors duration-500">
-                Purchase ₦{amount.toLocaleString()}
-              </span>
-              <ShoppingCart className="w-3.5 h-3.5 relative z-10 group-hover:text-primary transition-colors duration-500" />
-            </>
-          )}
-          <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-700 z-0"></div>
+        <div className="absolute inset-0 bg-white translate-x-1 translate-y-1 opacity-20"></div>
+        <div className="relative px-12 py-5 bg-slate-800 text-white font-sans text-[10px] font-bold uppercase tracking-[0.4em] flex items-center gap-3 overflow-hidden">
+          <span className="relative z-10">
+            Payment Coming Soon
+          </span>
+          <ShoppingCart className="w-3.5 h-3.5 relative z-10 opacity-50" />
         </div>
       </button>
       {error && (
