@@ -254,7 +254,7 @@ export default function BookstorePage() {
                     className="w-full h-full relative"
                   >
                     <Image 
-                      src="/nigerian_luxury_library_1777041369091.png" 
+                      src="/images/Book store_.jpg" 
                       alt="TMT Digital Library"
                       fill
                       className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out"
@@ -438,7 +438,7 @@ export default function BookstorePage() {
             className="relative aspect-[21/9] rounded-sm overflow-hidden group border border-white/5"
           >
             <Image 
-              src="/nigerian_luxury_library_1777041369091.png"
+              src="/images/Book store_.jpg"
               alt="TMT Bookstore Atmosphere"
               fill
               className="object-cover transition-transform duration-1000 group-hover:scale-105"

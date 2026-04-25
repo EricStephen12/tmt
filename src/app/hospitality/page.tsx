@@ -49,10 +49,10 @@ const services = [
 ];
 
 const galleryImages = [
-  "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=2000",
-  "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=2000",
-  "https://images.unsplash.com/photo-1551882547-ff40c0d12256?auto=format&fit=crop&q=80&w=2000",
-  "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&q=80&w=2000"
+  "/images/hospitalit1.jpg",
+  "/images/hospitalit2.jpg",
+  "/images/hospitalit3.jpg",
+  "/images/hopitalit4.jpg"
 ];
 
 export default function HospitalityPage() {
@@ -197,7 +197,7 @@ export default function HospitalityPage() {
                     className="w-full h-full relative"
                   >
                     <Image 
-                      src="/nigerian_luxury_hotel_lobby_1777041727085.png" 
+                      src="/images/hospitalit.jpg" 
                       alt="TMT Hospitality"
                       fill
                       className="object-cover grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out"
