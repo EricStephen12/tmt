@@ -3,20 +3,21 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, Building2, Briefcase, Truck, Leaf, GraduationCap, MonitorPlay, Hotel, Presentation, ShoppingCart, Video } from "lucide-react";
+import { Menu, X, ChevronDown, Building2, Briefcase, Truck, Leaf, GraduationCap, MonitorPlay, Hotel, Presentation, Shirt, ShoppingCart, Video } from "lucide-react";
 import { SignInButton, Show, UserButton } from "@clerk/nextjs";
 import Magnetic from "./Magnetic";
 
 const subsidiaries = [
-  { name: "Real Estate & Properties", href: "/real-estate", icon: Building2 },
+  { name: "TMT Real Estate", href: "/real-estate", icon: Building2 },
   { name: "TMT Consulting", href: "/consulting", icon: Briefcase },
   { name: "High Star Logistics", href: "/logistics", icon: Truck },
   { name: "Yutaka Farm", href: "/agriculture", icon: Leaf },
-  { name: "Group of Schools", href: "/schools", icon: GraduationCap },
+  { name: "TMT Schools", href: "/schools", icon: GraduationCap },
   { name: "TMT Bookstore", href: "/bookstore", icon: ShoppingCart },
   { name: "Virtual Training", href: "/training", icon: Video },
-  { name: "Tech & Multimedia", href: "/media-tech", icon: MonitorPlay },
+  { name: "TMT Technologies", href: "/media-tech", icon: MonitorPlay },
   { name: "Tours & Hospitality", href: "/hospitality", icon: Hotel },
+  { name: "Premium Klin", href: "/lifestyle", icon: Shirt },
   { name: "TMCA", href: "/tmca", icon: Presentation },
 ];
 

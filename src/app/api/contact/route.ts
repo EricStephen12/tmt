@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     // Check if SMTP credentials are provided, else return a mock success for development
     if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
       console.warn("SMTP credentials not found in env. Mocking email send success for development.");
-      console.log(`Mock Email Data -> From: ${name} <${email}> | To: Tmtglobal@gmail.com | Subject: ${subject} | Message: ${message}`);
+      console.log(`Mock Email Data -> From: ${name} <${email}> | To: info@tmtgroup.com.ng | Subject: ${subject} | Message: ${message}`);
       return NextResponse.json(
         { message: 'Mock Email sent successfully (Configure SMTP credentials to send real emails)' },
         { status: 200 }
@@ -34,7 +34,7 @@ export async function POST(req: Request) {
 
     const mailOptions = {
       from: process.env.SMTP_USER,
-      to: 'Tmtglobal@gmail.com',
+      to: 'info@tmtgroup.com.ng',
       replyTo: email,
       subject: `TMT Website Contact: ${subject || 'New Inquiry'} from ${name}`,
       text: `

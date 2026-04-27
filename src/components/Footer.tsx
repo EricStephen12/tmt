@@ -42,10 +42,10 @@ export default function Footer() {
               <div className="space-y-4">
                 <Magnetic strength={0.1}>
                   <a 
-                    href="mailto:Tmtglobal@gmail.com" 
+                    href="mailto:info@tmtgroup.com.ng" 
                     className="block text-4xl md:text-6xl lg:text-7xl font-serif italic text-primary hover:text-accent transition-all duration-700 hover:translate-x-4 tracking-tighter"
                   >
-                    Tmtglobal@gmail.com
+                    info@tmtgroup.com.ng
                   </a>
                 </Magnetic>
                 <Magnetic strength={0.1}>

@@ -105,7 +105,7 @@ export default function Contact() {
                   <div>
                     <h3 className="font-serif text-2xl text-primary mb-2 group-hover:text-accent transition-colors">Email</h3>
                     <p className="text-slate-500 font-sans font-light leading-relaxed">
-                      Tmtglobal@gmail.com
+                      info@tmtgroup.com.ng
                     </p>
                   </div>
                 </motion.div>
