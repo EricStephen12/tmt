@@ -39,70 +39,70 @@ const subsidiaries = [
     description: "Building more than just walls. We create the spaces where your family's legacy actually begins.",
     icon: Building2,
     href: "/real-estate",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000"
+    image: "/images/realestate.jpg"
   },
   {
     name: "TMT Consulting",
     description: "We help you stop guessing and start growing. Real advice for real impact in the African market.",
     icon: Briefcase,
     href: "/consulting",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=2000"
+    image: "/images/consultancy.jpg"
   },
   {
     name: "High Star Logistics",
     description: "Your goods, our promise. We're the bridge that connects your business to the rest of the world.",
     icon: Truck,
     href: "/logistics",
-    image: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&q=80&w=2000"
+    image: "/images/logistic.jpg"
   },
   {
     name: "Yutaka Farm",
     description: "Feeding Africa starts with the soil. We're bringing sustainable, heart-led farming to every table.",
     icon: Leaf,
     href: "/agriculture",
-    image: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=2000"
+    image: "/images/Farm.jpg"
   },
   {
     name: "TMT Schools",
     description: "The future belongs to our kids. We're giving them the world-class education they deserve to lead it.",
     icon: GraduationCap,
     href: "/schools",
-    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=2000"
+    image: "/images/schoolbuilding.jpg"
   },
   {
     name: "TMT Technologies",
     description: "Tech that feels human. We're building the digital tools that power the modern African dream.",
     icon: MonitorPlay,
     href: "/media-tech",
-    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=2000"
+    image: "/images/tech.jpg"
   },
   {
     name: "Tours & Hospitality",
     description: "Your escape, reimagined. We craft travel experiences that stay with you long after you've returned home.",
     icon: Hotel,
     href: "/hospitality",
-    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=2000"
+    image: "/images/hospitalit.jpg"
   },
   {
     name: "Premium Klin",
     description: "Take your time back. We handle the executive lifestyle care so you can focus on your big wins.",
     icon: Shirt,
     href: "/lifestyle",
-    image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=2000"
+    image: "/images/hospitalit3.jpg"
   },
   {
     name: "TMT Bookstore",
     description: "Unlock your next big idea. A curated home for the books and resources that shape the African mind.",
     icon: ShoppingCart,
     href: "/bookstore",
-    image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=2000"
+    image: "/images/Book store_.jpg"
   },
   {
     name: "Virtual Training",
     description: "Learn at your own pace, on your own terms. Professional training designed for the real world.",
     icon: Video,
     href: "/training",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=2000"
+    image: "/images/tech4.jpg"
   }
 ];
 
@@ -587,7 +587,7 @@ export default function Home() {
         {/* Background Parallax Image */}
         <div className="absolute inset-0 z-0">
           <Image 
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000" 
+            src="/images/consultancy1.jpg" 
             alt="Corporate Strategic Partnership"
             fill
             className="object-cover opacity-20 grayscale"
